@@ -1,6 +1,30 @@
 with source as (
 
-    select * from {{var('segment_page_views_table')}}
+   		--the select * statement is the original
+			--select * from {{var('segment_page_views_table')}} 
+		    SELECT  
+		        id
+		        , anonymous_id
+		        , user_id
+		        , received_at
+		        , sent_at
+		        , received_at as timestamp
+		        --, original_timestamp as timestamp
+		        , context_page_url as url
+		        , context_page_path as path
+		        , context_page_title as title
+		        , context_page_search as search
+		        , context_page_referrer as referrer
+		        , context_campaign_source
+		        , context_campaign_medium
+		        , context_campaign_name
+		        , context_campaign_term
+		        , context_campaign_content
+		        , context_ip
+		        , context_user_agent
+		        , domain
+		        , vertical
+    FROM {{var('segment_page_views_table')}}
 
 ),
 
